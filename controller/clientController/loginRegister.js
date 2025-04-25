@@ -102,6 +102,7 @@ const register = async (req, res) => {
 const logIn = async (req, res) => {
   try {
     const { enData } = req.body;
+    console.log('enData', enData)
     const decryptcheck = decryptData(enData);
     const { email, password } = decryptcheck;
     const data = await loginSchema.findOne({ email: email });
@@ -170,7 +171,7 @@ const forgetPasswordSendRequiest = async (req, res) => {
           expiresIn: "30d",
         }
       );
-
+console.log('email', email,token)
       const Thankyoumail = await mailsend({
         to: email,
         subject: "Resetpassword Success",

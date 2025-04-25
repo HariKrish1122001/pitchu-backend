@@ -22,7 +22,7 @@ const encryptData = (data) => {
 
 const decryptData = (encryptedData) => {
   try {
-    if (!encryptedData) {
+    if (!encryptedData && process.env.SECRET_KEY) {
     return   console.log("No encrypted data provided for decryption");
     }
     
