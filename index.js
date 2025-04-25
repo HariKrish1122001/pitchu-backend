@@ -17,7 +17,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-
+app.get("/", (req, res) => {
+  res.send("Hello from Vercel Node.js backend!");
+});
 try {
   mongoose.connect(
     process.env.MONGODBURL,
@@ -36,5 +38,6 @@ app.use("/client/International/", InternationalRouter);
 app.use("/client/", clientRouter);
 app.use("/client/", memberShipRouter);
 app.use("/admin/", adminRouter);
+
 //  http.listen(port);
 app.listen(port, console.log(`server is running on port ${port}`));
